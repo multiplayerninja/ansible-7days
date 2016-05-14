@@ -7,7 +7,7 @@ Install/configure 7 Days to Die gameservers with Ansible
 **What does it do?**
    - Automate deployment of 7 Days to Die Server
      * Downloads and sets up SteamCMD
-     * Authorizes via Steamguard to pull down 7 Days to Die assets
+     * Authorizes via Steamguard for 7 Days to Die assets
      * Drops in templated server configs, startup script
      * Installs 7 Days to Die Systemd services for management
 
@@ -21,7 +21,7 @@ Install/configure 7 Days to Die gameservers with Ansible
 **7 Days Server Instructions**
    - Clone repo and setup your hosts file
 ```
-git clone https://github.com/sadsfae/ansible-7days
+git clone https://github.com/multiplayerninja/ansible-7days
 cd ansible-7days
 sed -i 's/host-01/7daystodieserver/' hosts
 ```
