@@ -1,6 +1,6 @@
 ansible-7days
 =============
-Install and configure 7 Days to Die gameserver with Ansible
+Install/configure 7 Days to Die gameservers with Ansible
 
 ![7Days](/image/7days_icon.png?raw=true "This is a really fun game")
 
