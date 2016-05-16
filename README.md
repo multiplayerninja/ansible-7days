@@ -1,13 +1,12 @@
 ansible-7days
 =============
-Install/configure 7 Days to Die gameservers with Ansible
+Install and configure 7 Days to Die gameserver with Ansible
 
 ![7Days](/image/7days_icon.png?raw=true "This is a really fun game")
 
 **What does it do?**
    - Automate deployment of 7 Days to Die Server
      * Downloads and sets up SteamCMD
-     * Authorizes via Steamguard for 7 Days to Die assets
      * Drops in templated server configs, startup script
      * Installs 7 Days to Die Systemd services for management
 
@@ -25,27 +24,13 @@ git clone https://github.com/multiplayerninja/ansible-7days
 cd ansible-7days
 sed -i 's/host-01/7daystodieserver/' hosts
 ```
-   - Add your Steam ID and password here:
+   - Optionally edit server name, port or other variables here:
 ```
-sed -i 's/steam_user:/steam_user: YOURUSER/' install/group_vars/all.yml
-sed -i 's/steam_pass:/steam_pass: YOURPASS/' install/group_vars/all.yml
+vi install/group_vars/all.yml
 ```
    - Run the playbook
 ```
 ansible-playbook -i hosts install/7days.xml
-```
-   - The first playbook run will download and setup SteamCMD
-   - It will also trigger steamguard, so you'll need to check your email
-
-![7Days](/image/steam_auth.png?raw=true "Enter this code in install/group_vars/all.yml.")
-
-   - Add the Steamguard code sent via email 
-```
-sed -i 's/steam_code:/steam_code: STEAMCODE/' install/group_vars/all.yml
-```
-   - Run Ansible one more time
-```
-ansible-playbook -i hosts install/7days.yml
 ```
    * On subsequent runs Ansible will simply update SteamCMD, 7 days assets and
      restart the 7days systemd service.
@@ -59,21 +44,21 @@ ansible-playbook -i hosts install/7days.yml
 ```
 ├── hosts
 ├── image
-│   └── steam_auth.png
-└── install
-    ├── 7days.yml
-    ├── group_vars
-    │   └── all.yml
-    └── roles
-        └── 7server
-            ├── files
-            │   ├── 7days.service
-            │   └── startserver.sh
-            ├── tasks
-            │   └── main.yml
-            └── templates
-                ├── serverconfig.xml.j2
-                └── update_server.txt.j2
+│   └── 7days_icon.png
+├── install
+│   ├── 7days.yml
+│   ├── group_vars
+│   │   └── all.yml
+│   └── roles
+│       └── 7server
+│           ├── files
+│           │   ├── 7days.service
+│           │   └── startserver.sh
+│           ├── tasks
+│           │   └── main.yml
+│           └── templates
+│               └── serverconfig.xml.j2
+└── LICENSE
 ```
 
 **7 Days to Die Live Trailer**
